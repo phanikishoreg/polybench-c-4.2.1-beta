@@ -8,6 +8,9 @@ WCFLAGS += --target=wasm32-wasi
 
 all: clean floyd-warshall floyd-warshall.wasi floyd-warshall.em
 lucet: floyd-warshall.lucet
+native:floyd-warshall
+wasi:floyd-warshall.wasi
+node:floyd-warshall.em
 
 floyd-warshall: floyd-warshall.c floyd-warshall.h
 	${VERBOSE} ${CC} -o floyd-warshall floyd-warshall.c ${CFLAGS} -I. -I../../utilities ../../utilities/polybench.c ${EXTRA_FLAGS}

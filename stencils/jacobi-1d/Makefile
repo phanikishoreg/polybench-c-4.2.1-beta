@@ -8,6 +8,9 @@ WCFLAGS += --target=wasm32-wasi
 
 all: clean jacobi-1d jacobi-1d.wasi jacobi-1d.em
 lucet: jacobi-1d.lucet
+native:jacobi-1d
+wasi:jacobi-1d.wasi
+node:jacobi-1d.em
 
 jacobi-1d: jacobi-1d.c jacobi-1d.h
 	${VERBOSE} ${CC} -o jacobi-1d jacobi-1d.c ${CFLAGS} -I. -I../../utilities ../../utilities/polybench.c ${EXTRA_FLAGS}

@@ -8,6 +8,9 @@ WCFLAGS += --target=wasm32-wasi
 
 all: clean atax atax.wasi atax.em
 lucet: atax.lucet
+native:atax
+wasi:atax.wasi
+node:atax.em
 
 atax: atax.c atax.h
 	${VERBOSE} ${CC} -o atax atax.c ${CFLAGS} -I. -I../../../utilities ../../../utilities/polybench.c ${EXTRA_FLAGS}

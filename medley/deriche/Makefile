@@ -8,6 +8,9 @@ WCFLAGS += --target=wasm32-wasi
 
 all: clean deriche deriche.wasi deriche.em
 lucet: deriche.lucet
+native:deriche
+wasi:deriche.wasi
+node:deriche.em
 
 deriche: deriche.c deriche.h
 	${VERBOSE} ${CC} -o deriche deriche.c ${CFLAGS} -I. -I../../utilities ../../utilities/polybench.c ${EXTRA_FLAGS}

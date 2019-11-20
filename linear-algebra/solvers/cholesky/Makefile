@@ -8,6 +8,9 @@ WCFLAGS += --target=wasm32-wasi
 
 all: clean cholesky cholesky.wasi cholesky.em
 lucet: cholesky.lucet
+native:cholesky
+wasi:cholesky.wasi
+node:cholesky.em
 
 cholesky: cholesky.c cholesky.h
 	${VERBOSE} ${CC} -o cholesky cholesky.c ${CFLAGS} -I. -I../../../utilities ../../../utilities/polybench.c ${EXTRA_FLAGS}

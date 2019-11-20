@@ -8,6 +8,9 @@ WCFLAGS += --target=wasm32-wasi
 
 all: clean gemm gemm.wasi gemm.em
 lucet: gemm.lucet
+native:gemm
+wasi:gemm.wasi
+node:gemm.em
 
 gemm: gemm.c gemm.h
 	${VERBOSE} ${CC} -o gemm gemm.c ${CFLAGS} -I. -I../../../utilities ../../../utilities/polybench.c ${EXTRA_FLAGS}

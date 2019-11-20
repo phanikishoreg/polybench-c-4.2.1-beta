@@ -8,6 +8,9 @@ WCFLAGS += --target=wasm32-wasi
 
 all: clean nussinov nussinov.wasi nussinov.em
 lucet: nussinov.lucet
+native:nussinov
+wasi:nussinov.wasi
+node:nussinov.em
 
 nussinov: nussinov.c nussinov.h
 	${VERBOSE} ${CC} -o nussinov nussinov.c ${CFLAGS} -I. -I../../utilities ../../utilities/polybench.c ${EXTRA_FLAGS}

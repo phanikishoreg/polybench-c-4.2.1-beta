@@ -8,6 +8,9 @@ WCFLAGS += --target=wasm32-wasi
 
 all: clean seidel-2d seidel-2d.wasi seidel-2d.em
 lucet: seidel-2d.lucet
+native:seidel-2d
+wasi:seidel-2d.wasi
+node:seidel-2d.em
 
 seidel-2d: seidel-2d.c seidel-2d.h
 	${VERBOSE} ${CC} -o seidel-2d seidel-2d.c ${CFLAGS} -I. -I../../utilities ../../utilities/polybench.c ${EXTRA_FLAGS}

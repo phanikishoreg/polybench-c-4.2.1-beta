@@ -6,6 +6,9 @@ WCFLAGS += --target=wasm32-wasi
 
 all: clean covariance covariance.wasi covariance.em
 lucet: covariance.lucet
+native:covariance
+wasi:covariance.wasi
+node:covariance.em
 
 covariance: covariance.c covariance.h
 	${VERBOSE} ${CC} -o covariance covariance.c ${CFLAGS} -I. -I../../utilities ../../utilities/polybench.c ${EXTRA_FLAGS}

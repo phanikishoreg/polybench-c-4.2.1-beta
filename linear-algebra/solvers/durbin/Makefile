@@ -8,6 +8,9 @@ WCFLAGS += --target=wasm32-wasi
 
 all: clean durbin durbin.wasi durbin.em
 lucet:  durbin.lucet
+native:durbin
+wasi:durbin.wasi
+node:durbin.em
 
 durbin: durbin.c durbin.h
 	${VERBOSE} ${CC} -o durbin durbin.c ${CFLAGS} -I. -I../../../utilities ../../../utilities/polybench.c ${EXTRA_FLAGS}

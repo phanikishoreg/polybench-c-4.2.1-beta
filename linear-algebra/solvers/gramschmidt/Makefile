@@ -8,6 +8,9 @@ WCFLAGS += --target=wasm32-wasi
 
 all: clean gramschmidt gramschmidt.wasi gramschmidt.em
 lucet:  gramschmidt.lucet
+native:gramschmidt
+wasi:gramschmidt.wasi
+node:gramschmidt.em
 
 gramschmidt: gramschmidt.c gramschmidt.h
 	${VERBOSE} ${CC} -o gramschmidt gramschmidt.c ${CFLAGS} -I. -I../../../utilities ../../../utilities/polybench.c ${EXTRA_FLAGS}

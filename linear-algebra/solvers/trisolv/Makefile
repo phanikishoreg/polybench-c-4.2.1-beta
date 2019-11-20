@@ -8,6 +8,9 @@ WCFLAGS += --target=wasm32-wasi
 
 all: clean trisolv trisolv.wasi trisolv.em
 lucet: trisolv.lucet
+native:trisolv
+wasi:trisolv.wasi
+node:trisolv.em
 
 trisolv: trisolv.c trisolv.h
 	${VERBOSE} ${CC} -o trisolv trisolv.c ${CFLAGS} -I. -I../../../utilities ../../../utilities/polybench.c ${EXTRA_FLAGS}

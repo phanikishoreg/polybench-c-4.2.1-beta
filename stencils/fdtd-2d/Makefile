@@ -8,6 +8,9 @@ WCFLAGS += --target=wasm32-wasi
 
 all: clean fdtd-2d fdtd-2d.wasi fdtd-2d.em
 lucet: fdtd-2d.lucet
+native:fdtd-2d
+wasi:fdtd-2d.wasi
+node:fdtd-2d.em
 
 fdtd-2d: fdtd-2d.c fdtd-2d.h
 	${VERBOSE} ${CC} -o fdtd-2d fdtd-2d.c ${CFLAGS} -I. -I../../utilities ../../utilities/polybench.c ${EXTRA_FLAGS}

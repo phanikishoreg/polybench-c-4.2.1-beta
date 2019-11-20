@@ -8,6 +8,9 @@ WCFLAGS += --target=wasm32-wasi
 
 all: clean 2mm 2mm.wasi 2mm.em
 lucet: 2mm.lucet
+native:2mm
+wasi:2mm.wasi
+node:2mm.em
 
 2mm: 2mm.c 2mm.h
 	${VERBOSE} ${CC} -o 2mm 2mm.c ${CFLAGS} -I. -I../../../utilities ../../../utilities/polybench.c ${EXTRA_FLAGS}

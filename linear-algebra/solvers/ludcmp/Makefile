@@ -8,6 +8,9 @@ WCFLAGS += --target=wasm32-wasi
 
 all: clean ludcmp ludcmp.wasi ludcmp.em
 lucet: ludcmp.lucet
+native:ludcmp
+wasi:ludcmp.wasi
+node:ludcmp.em
 
 ludcmp: ludcmp.c ludcmp.h
 	${VERBOSE} ${CC} -o ludcmp ludcmp.c ${CFLAGS} -I. -I../../../utilities ../../../utilities/polybench.c ${EXTRA_FLAGS}

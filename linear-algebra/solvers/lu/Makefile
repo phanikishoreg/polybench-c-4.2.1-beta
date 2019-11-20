@@ -8,6 +8,9 @@ WCFLAGS += --target=wasm32-wasi
 
 all: clean lu lu.wasi lu.em
 lucet: lu.lucet
+native:lu
+wasi:lu.wasi
+node:lu.em
 
 lu: lu.c lu.h
 	${VERBOSE} ${CC} -o lu lu.c ${CFLAGS} -I. -I../../../utilities ../../../utilities/polybench.c ${EXTRA_FLAGS}

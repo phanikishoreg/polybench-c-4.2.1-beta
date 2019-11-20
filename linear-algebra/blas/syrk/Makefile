@@ -8,6 +8,9 @@ WCFLAGS += --target=wasm32-wasi
 
 all: clean syrk syrk.wasi syrk.em
 lucet: syrk.lucet
+node:syrk
+wasi:syrk.wasi
+node:syrk.em
 
 syrk: syrk.c syrk.h
 	${VERBOSE} ${CC} -o syrk syrk.c ${CFLAGS} -I. -I../../../utilities ../../../utilities/polybench.c ${EXTRA_FLAGS}

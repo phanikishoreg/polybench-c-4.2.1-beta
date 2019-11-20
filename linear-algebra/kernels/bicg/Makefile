@@ -8,6 +8,9 @@ WCFLAGS += --target=wasm32-wasi
 
 all: clean bicg bicg.wasi bicg.em
 lucet: bicg.lucet
+native:bicg
+wasi:bicg.wasi
+node:bicg.em
 
 bicg: bicg.c bicg.h
 	${VERBOSE} ${CC} -o bicg bicg.c ${CFLAGS} -I. -I../../../utilities ../../../utilities/polybench.c ${EXTRA_FLAGS}

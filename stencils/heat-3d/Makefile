@@ -8,6 +8,9 @@ WCFLAGS += --target=wasm32-wasi
 
 all: clean heat-3d heat-3d.wasi heat-3d.em
 lucet: heat-3d.lucet
+native:heat-3d
+wasi:heat-3d.wasi
+node:heat-3d.em
 
 heat-3d: heat-3d.c heat-3d.h
 	${VERBOSE} ${CC} -o heat-3d heat-3d.c ${CFLAGS} -I. -I../../utilities ../../utilities/polybench.c ${EXTRA_FLAGS}

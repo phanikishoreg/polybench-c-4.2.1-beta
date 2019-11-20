@@ -7,6 +7,9 @@ WCFLAGS += --target=wasm32-wasi
 
 all:clean correlation correlation.wasi correlation.em
 lucet: correlation.lucet
+native: correlation
+wasi: correlation.wasi
+node: correlation.em
 
 correlation: correlation.c correlation.h
 	${VERBOSE} ${CC} -o correlation correlation.c ${CFLAGS} -I. -I../../utilities ../../utilities/polybench.c ${EXTRA_FLAGS}

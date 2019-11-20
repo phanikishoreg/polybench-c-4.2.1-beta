@@ -8,6 +8,9 @@ WCFLAGS += --target=wasm32-wasi
 
 all: clean doitgen doitgen.wasi doitgen.em
 lucet: doitgen.lucet
+native:doitgen
+wasi:doitgen.wasi
+node:doitgen.em
 
 doitgen: doitgen.c doitgen.h
 	${VERBOSE} ${CC} -o doitgen doitgen.c ${CFLAGS} -I. -I../../../utilities ../../../utilities/polybench.c ${EXTRA_FLAGS}
