@@ -35,6 +35,11 @@ node:
 
 awsm:
 	@ for dir in ${sf_dir} ; do \
-		make -C $$dir polytests ; \
+		make -C $$dir awsm ; \
+	done
+
+sf:
+	@ for dir in ${sf_dir} ; do \
+		make -C $$dir sf ; \
 	done
 
