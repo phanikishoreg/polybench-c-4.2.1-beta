@@ -1,26 +1,26 @@
-#!/bin/sh
+#!/bin/bash
 
 ITERS=$1
 
 testeach()
 {
-        tmp_cnt=${ITERS}
-	exe_relpath=$1
+	local exe_relpath=$1
+	local total_runtime=0
 
-	echo "${exe_relpath} for ${tmp_cnt}"
+	# Parse the binary name
+	# Equivalent to https://regexr.com/4rrm3
+	[[ $exe_relpath =~ /([^/]+)$ ]]
+	bench_name="${BASH_REMATCH[1]}"
 
-        while [ ${tmp_cnt} -gt 0 ]; do
+	for ((i=0; i < $ITERS; i++)); do
 		start=$(date +%s.%N)
 		lucet-wasi --stack-size 524288 $exe_relpath.lucet 2>/dev/null 1>lout.txt
 		end=$(date +%s.%N)
-		tmp_cnt=$((tmp_cnt - 1))
 		runtime=$(echo "$end - $start" | bc)
-		benchtime=$(cat lout.txt | cut -d' ' -f1 | head -n 1)
-		rm lout.txt
-		echo "$runtime $benchtime"
-        done
-
-	echo "Done!"
+		printf "%s, %d, %f\n" "$bench_name" "$i" "$runtime"
+		total_runtime="$(echo "$total_runtime + $runtime" | bc)"
+	done
+	printf "%s, avg, %f\n" "$bench_name" "$(echo "scale=8;$total_runtime/$ITERS" | bc)"
 }
 
 # datamining
