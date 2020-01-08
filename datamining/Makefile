@@ -24,6 +24,8 @@ clean:
 	${WASMCC} ${$(@:%_ply=%)_CFLAGS} ${WASMCFLAGS} ${OPTFLAGS} -I${POLYUTIL} ${POLYUTILC} ${DUMMY} ${BENCH_DIR}/$(@:%_ply=%)/*.c -o ${TMP_DIR}/$(@:%_ply=%).wasm
 	${SFCC} ${TMP_DIR}/$(@:%_ply=%).wasm -o ${TMP_DIR}/$(@:%_ply=%).bc
 	${CC} ${OPTFLAGS} -D${USE_MEM} ${TMP_DIR}/$(@:%_ply=%).bc ${MEMC} ${RT_LIBC} ${RT_RT} -o ${TMP_DIR}/$(@:%_ply=%)_wasm.out
+	${CC} ${OPTFLAGS} ${TMP_DIR}/$(@:%_ply=%).bc ${RT_MEM}/${MEMC_64} ${RT_LIBC} ${RT_RT} -o ${TMP_DIR}/$(@:%_ply=%)_wasm_vm.out
+	${CC} ${OPTFLAGS} -D${USE_MEM} ${TMP_DIR}/$(@:%_ply=%).bc ${RT_MEM}/${MEMC_NO} ${RT_LIBC} ${RT_RT} -o ${TMP_DIR}/$(@:%_ply=%)_wasm_none.out
 
 %_aply:
 	@mkdir -p ${TMP_DIR}
